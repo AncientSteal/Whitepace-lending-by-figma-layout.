@@ -3,7 +3,6 @@ const registrationForm = document.getElementById('registration-form');
 const resetForm = document.getElementById('reset-form');
 
 const popupContainer = document.querySelector('.popup-container');
-const popupElements = popupContainer.querySelectorAll('.popup__element');
 
 const clearErrors = (form) => {
     form.querySelectorAll('.error-text').forEach(error => error.remove());
@@ -23,6 +22,10 @@ const errorForm = (message, input) => {
 };
 
 function closePopup() {
+    if (!popupContainer) return;
+
+    const popupElements = popupContainer.querySelectorAll('.popup__element');
+
     popupElements.forEach((element) => {
         element.classList.remove('active');
         popupContainer.classList.remove('active');
@@ -109,7 +112,7 @@ const validationRules = {
         return null;
     },
 
-    password__repead: (value, originalPassword) => {
+    password__repeat: (value, originalPassword) => {
         return value !== originalPassword ? 'Passwords do not match' : null;
     },
 }
@@ -158,7 +161,7 @@ const formValidation = (formElement, onSuccess) => {
             
         }
 
-        if (isValid) {
+        if (isValid && (formBtns.length > 0)) {
 
             formBtns.forEach(btn => {
                 btn.disabled = true;
@@ -182,17 +185,25 @@ const formValidation = (formElement, onSuccess) => {
     });
 };
 
-formValidation(loginForm, (data, serverResponse) => {
-    alert(`Пользователь ${data.login} вошёл в аккаунт.`);
-    console.log('Сервер подтвердил запись с ID:', serverResponse.id);
-});
+if (loginForm) {
+    formValidation(loginForm, (data, serverResponse) => {
+        alert(`Пользователь ${data.login} вошёл в аккаунт.`);
+        console.log('Сервер подтвердил запись с ID:', serverResponse.id);
+    });
+    
+}
 
-formValidation(registrationForm, (data, serverResponse) => {
-    alert(`Пользователь ${data.login} успешно зарагистрирован. На почту ${data.email} пришло уведомление`);
-    console.log('Сервер подтвердил запись с ID:', serverResponse.id);
-});
+if (registrationForm) {
+    formValidation(registrationForm, (data, serverResponse) => {
+        alert(`Пользователь ${data.login} успешно зарагистрирован. На почту ${data.email} пришло уведомление`);
+        console.log('Сервер подтвердил запись с ID:', serverResponse.id);
+    });
+}
 
-formValidation(resetForm, (data, serverResponse) => {
-    alert(`На почту ${data.email} пришло письмо для смены пароля.`);
-    console.log('Сервер подтвердил запись с ID:', serverResponse.id);
-});
+
+if (resetForm) {
+    formValidation(resetForm, (data, serverResponse) => {
+        alert(`На почту ${data.email} пришло письмо для смены пароля.`);
+        console.log('Сервер подтвердил запись с ID:', serverResponse.id);
+    });
+}

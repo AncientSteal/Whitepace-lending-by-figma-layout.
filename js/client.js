@@ -12,7 +12,7 @@ if (clientCards && cardContainer) {
                 <div class="client-svg"></div>
                 <p>${client.review}</p>
             </div>
-            <div  class="clent-profile">
+            <div  class="client-profile">
                 <div class="client-avatar"><img src="${client.avatar}" alt="avatar"></div>
                 <div class="client-info">
                     <h3>${client.name}</h3>
@@ -26,10 +26,11 @@ if (clientCards && cardContainer) {
 
 const clientBtnPrev = document.querySelector('.clients-container__btns_prev');
 const clientBtnNext = document.querySelector('.clients-container__btns_next');
-const clientArray = cardContainer.querySelectorAll('.client-card');
 const sliderContainer = document.querySelector('.slider-container');
 
-if (clientBtnPrev && clientBtnNext && clientArray) {
+if (clientBtnPrev && clientBtnNext && cardContainer && sliderContainer) {
+
+    const clientArray = cardContainer.querySelectorAll('.client-card');
 
     let currentIndex = 0;
     let visibleCards = 3;

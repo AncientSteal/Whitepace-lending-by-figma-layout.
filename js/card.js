@@ -29,63 +29,82 @@ if (productCards && cardsContainer) {
 const productBtnPrev = document.querySelector('.cards-container__btns_prev');
 const productBtnNext = document.querySelector('.cards-container__btns_next');
 
-const cardArray = cardsContainer.querySelectorAll('.card');
-
 let currentIndex = 1;
+if (productBtnPrev) {
+    productBtnPrev.addEventListener('click', () => {
 
-productBtnPrev.addEventListener('click', () => {
-
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-    }
-
-});
-
-productBtnNext.addEventListener('click', () => {
-
-     if (currentIndex < cardArray.length - 1) {
-        currentIndex++;
-        updateSlider();
-     }
-
-});
-
-const isMobileMedia = window.matchMedia("(max-width: 768px)");
-
-function updateSlider() {
-
-    if (!isMobileMedia.matches) {
-        cardsContainer.style.transform = 'translateX(0px)';
-        return;
-    };
-
-    const paddingContainer = parseInt(window.getComputedStyle(cardsContainer).gap) || 0;
-    const currentCardWidth = cardArray[0].offsetWidth;
-
-    const newOffset = -(currentIndex * (currentCardWidth + paddingContainer));
-
-    cardsContainer.style.transform = `translateX(${newOffset}px)`;
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
     
-    cardArray.forEach((card, index) => {
-        card.classList.toggle('active', index === currentIndex);
     });
-
-    productBtnPrev.classList.toggle('disable', currentIndex === 0);
-    productBtnNext.classList.toggle('disable', currentIndex === cardArray.length - 1);
 }
 
-updateSlider();
+if (cardsContainer) {
 
-window.addEventListener('resize', updateSlider);
+    const cardArray = cardsContainer.querySelectorAll('.card');
 
-cardArray.forEach(card => {
-    card.addEventListener('click', () => {
-        if (!isMobileMedia.matches) {
-            cardArray.forEach(card => {
-                card.classList.remove('active');
-            })
-            card.classList.add('active');
-        }
+    if (productBtnNext && (cardArray.length > 0)) {
+        productBtnNext.addEventListener('click', () => {
+
+            if (currentIndex < cardArray.length - 1) {
+            currentIndex++;
+            updateSlider();
+            }
+    
     });
-});
+    }
+
+
+    const isMobileMedia = window.matchMedia("(max-width: 768px)");
+
+    function updateSlider() {
+
+        if (!cardsContainer) return;
+
+        if (!isMobileMedia.matches) {
+            cardsContainer.style.transform = 'translateX(0px)';
+            return;
+        };
+
+        const paddingContainer = parseInt(window.getComputedStyle(cardsContainer).gap) || 0;
+        const currentCardWidth = cardArray[0].offsetWidth;
+
+        const newOffset = -(currentIndex * (currentCardWidth + paddingContainer));
+
+        cardsContainer.style.transform = `translateX(${newOffset}px)`;
+        
+        if (cardArray.length > 0) {
+            cardArray.forEach((card, index) => {
+                card.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        if (productBtnPrev) {
+            productBtnPrev.classList.toggle('disable', currentIndex === 0);
+        }
+
+        if (productBtnNext) {
+            productBtnNext.classList.toggle('disable', currentIndex === cardArray.length - 1);
+        }
+
+    }
+
+    updateSlider();
+
+    window.addEventListener('resize', updateSlider);
+
+    if (cardArray.length > 0) {
+        cardArray.forEach(card => {
+            card.addEventListener('click', () => {
+                if (!isMobileMedia.matches) {
+                    cardArray.forEach(card => {
+                        card.classList.remove('active');
+                    })
+                    card.classList.add('active');
+                }
+            });
+        });
+    }
+}
