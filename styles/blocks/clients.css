@@ -1,0 +1,201 @@
+
+.slider-container {
+    width: 100%;
+}
+
+.clients-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--page-gutter);
+    overflow: hidden;
+}
+
+.client-card {
+    --client-card-shadow: none;
+    --client-card-text: var(--light);
+    --client-card-quote: var(--light);
+    --client-card-bg: var(--accent);
+    --client-card-svg: url(../../images/quote/Quote-light.svg);
+    --client-card-line: var(--light);
+    --client-name: var(--main);
+    --gap: 100px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    width: calc((100% - (var(--gap) * 2)) / 3);
+    padding: 60px 40px;
+    background-color: var(--client-card-bg);
+    color: var(--client-card-text);
+    box-shadow: var(--client-card-shadow);
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+    flex-shrink: 0;
+}
+
+.client-card.active {
+    --client-card-shadow: 15px 10px 50px rgba(0, 0, 0, 0.10);
+    --client-card-text: var(--dark);
+    --client-card-quote: var(--main);
+    --client-card-bg: var(--light);
+    --client-card-svg: url(../../images/quote/Quote-dark.svg);
+    --client-card-line: var(--dark);
+    --cilent-name: var(--dark);
+}
+
+.client-says  {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--client-card-line);
+}
+
+.client-says p {
+    margin: 32px 0 40px;
+}
+
+.client-svg {
+    width: 86px;
+    height: 62px;
+    background-size: contain;
+    flex-shrink: none;
+    background: var(--client-card-svg) center / contain no-repeat;
+}
+
+.clent-profile {
+    display: flex;
+    gap: 42px;
+}
+
+.client-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.client-info h3 {
+    color: var(--client-name);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.client-info p {
+    font-size: 16px;
+    letter-spacing: 0;
+}
+
+.client-avatar {
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.client-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.clients-container__btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.clients__button {
+    display: block;
+    color: var(--light);
+    background-color: var(--main);
+    font-size: 36px;
+    font-weight: 600;
+    transform: translateY(10%);
+    border: none;
+    padding: 16px 40px;
+    border-radius: 8px;
+    transition: box-shadow .3s ease-in-out, opacity .3s ease-in-out, transform .3s ease-in-out;
+    cursor: pointer;
+}
+
+.clients__button:hover {
+    transform: scale(1.1) translateY(inherit);
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.clients__button.disable {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 1440px) {
+
+    .clients-container {
+        padding: 0 32px;
+    }
+
+    .clent-profile {
+        gap: 20px;
+    }
+
+    .client-card {
+        --gap: 40px;
+    }
+
+    .client-info {
+        gap: 10px;
+    }
+
+    .client-info h3 {
+        font-size: 20px;
+    }
+
+    .client-info p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1152px) {
+    .clients-container {
+        padding: 0;
+    }
+
+    .client-card {
+        width: calc((100% - (var(--gap) * 2)) / 2);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .clients-container {
+        padding: 0;
+    }
+
+    .client-card {
+        min-width: 90vw;
+        padding: 30px 20px;
+    }
+
+    .clients__button {
+        padding: 8px 20px;
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .clients-container {
+        padding: 0;
+    }
+
+    .client-card {
+        width: 100%;
+        padding: 20px 10px;
+        --gap: 20px;
+    }
+
+    .client-svg {
+        width: 44px;
+        height: 36px;
+    }
+}

@@ -1,0 +1,223 @@
+.popup-container {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+    transition: all 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.2); 
+}
+
+.popup-container.active {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+.popup {
+    width: 40vw;
+    max-width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 10px;
+    color: var(--dark);
+}
+
+.popup h3 {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.popup button {
+    transition: background-color .3s ease-in-out;
+    background-color: var(--accent);
+    color: var(--light);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.popup button:hover {
+    background-color: var(--main);
+}
+
+.popup-info input  {
+    padding: 4px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+}
+
+.popup-info button  {
+    padding: 8px;
+}
+
+.popup-close__btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-self: flex-end;
+}
+
+.popup-close__btn span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--light);
+    position: absolute;
+}
+
+.popup-close__btn span:first-child {
+    transform: rotateZ(45deg);
+    top: 50%;
+    left: 12.5%;
+}
+
+.popup-close__btn span:last-child {
+    transform: rotateZ(-45deg);
+    top: 50%;
+    left: 12.5%;
+}
+
+.popup__element {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .2s ease-in-out, opacity .2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+}
+
+.popup__element.active {
+    max-height: 600px;
+    opacity: 1;
+}
+
+.form__label {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.error-text {
+    color: rgb(228, 78, 140);
+    font-size: 10px;
+}
+
+.form__radio {
+    color: var(--dark);
+    background-color: var(--light);
+    transition: background-color .3s ease-in-out, color .3s ease-in-out;
+    border-radius: 8px;
+    border: 1px solid var(--second);
+    padding: 4px;
+}
+
+.form__radio:hover {
+    background-color: var(--accent);
+    color: var(--light)
+}
+
+.form__radio span{
+    display: block;
+    font-size: 12px;
+}
+
+.product-choose__card {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+.form__radio input[type='radio'] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.form__radio:has(input[type='radio']:checked) {
+    background-color: var(--main);
+    color: var(--light);
+    border-color: var(--light);
+}
+
+.form__radio:has(input[type='radio']:checked) .product-choose__price {
+    color: var(--second);
+}
+
+.form__btn.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+    .popup {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .popup-info button  {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    .popup-close__btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .popup-close__btn span {
+        width: 22px;
+    }
+
+    .popup__element {
+        gap: 6px;
+    }
+
+    .popup {
+        padding: 6px;
+    }
+
+    .popup h3 {
+        font-size: 14px;
+    }
+
+    .popup-info input  {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    .form__label {
+        font-size: 10px;
+    }
+
+    .error-text {
+        font-size: 8px;
+    }
+
+    .form__radio {
+        font-size: 12px;
+    }
+
+    .form__radio span {
+        font-size: 10px;
+    }
+}

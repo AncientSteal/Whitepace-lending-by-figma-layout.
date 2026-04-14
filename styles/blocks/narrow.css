@@ -1,0 +1,31 @@
+.narrow-container {
+    max-width: 608px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.narrow-title {
+    text-align: center;
+}
+
+.narrow-text {
+    text-align: center;
+    font-weight: 300;
+}
+
+.narrow-svg-container {
+    display: flex;
+    gap: 40px;
+    width: fit-content;
+    height: fit-content;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 320px) {
+    .narrow-svg-container img {
+        max-width: 15%;
+    }
+}

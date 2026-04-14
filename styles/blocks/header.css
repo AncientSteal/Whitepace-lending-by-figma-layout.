@@ -1,0 +1,339 @@
+.header-nav {
+    background-color: var(--main);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0 32px;
+}
+
+.header-nav__content {
+    margin: auto;
+    max-width: var(--content-width);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--light);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 28px;
+    gap: 10px;
+    margin: 29px 0;
+}
+
+.logo img {
+    width: 37px;
+    height: 29px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin: 16px 0;
+    position: relative;
+}
+
+.menu__navigation {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 18px 0;
+    font-weight: 500;
+}
+
+.menu-list__btn {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    width: fit-content;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+    background-color: var(--main);
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.menu-list__btn:hover {
+    color: var(--second);
+}
+
+.menu-list {
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    max-width: fit-content;
+    top: 100%;
+    left: -30px;
+    background-color: var(--main);
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 20px 40px 20px 30px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, gap 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transform: translateY(-40px);
+    opacity: 0;
+    z-index: -1;
+    gap: 5px;
+}
+
+.menu-list:hover {
+    color: var(--second);
+}
+
+.menu-list__btn.active .menu-list {
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+    gap: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.menu-list__btn img {
+    width: 12px;
+    height: 6px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-list__btn.active img {
+    transform: rotateX(180deg);
+}
+
+.menu-list a {
+    color: var(--light);
+}
+
+.menu__buttons {
+    display: flex;
+    gap: 24px;
+}
+
+.header-button__login.button {
+    background-color: var(--second);
+    color: var(--main);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.header-title {
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.header-description {
+    max-width: 55ch;
+    line-height: 1.66;
+    letter-spacing: -0.02rem;
+    font-weight: 300;
+}
+
+.header-container__img {
+    width: 824px;
+    min-height: 549px;
+    background-color: var(--pale-accent);
+    flex: 1;
+}
+
+@media screen and (max-width: 1440px) {
+    .header-container__img {
+        min-height: 450px;
+    }
+
+    .menu__navigation {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1152px) {
+
+    .header-container__img {
+        min-height: 350px;
+    }
+
+    .menu__navigation {
+        pointer-events: none;
+        display: flex;
+        position: absolute;
+        top: 100%;
+        right: -32px;
+        flex-direction: column;
+        background-color: var(--main);
+        padding: 15px;
+        align-items: flex-start;
+        gap: 0;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        transform: translateX(10%);
+    }
+
+    .menu__navigation.active {
+        pointer-events: all;
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    .menu-list__btn {
+        gap: 10px;
+        justify-content: space-between;
+        padding: 0;
+        width: 100%;
+        display: flex;
+    }
+
+    .menu-list__btn.active .menu-list {
+        gap: 10px;
+        box-shadow: none;
+    }
+
+    .menu-list {
+        visibility: visible;
+        position: relative;
+        transform: translateY(0);
+        opacity: 1;
+        gap: 10px;
+        box-shadow: none;
+        left: 0;
+        padding: 10px;
+    }
+
+    .menu-list__btn:last-child .menu-list {
+        padding: 10px;
+    }
+
+    .menu-list__btn img {
+        transform: rotateZ(-90deg);
+    }
+
+    .menu-list__btn.active img {
+         transform: rotateZ(-90deg);
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+
+    .header-nav {
+        padding: 0 20px;
+    }
+
+    .menu__navigation {
+        right: -20px;
+    }
+  
+    .menu__buttons {
+        opacity: 0;
+        pointer-events: none;
+        display: flex;
+        position: absolute;
+        top: 500px;
+        right: -30%;
+        padding: 20px 0;
+        gap: 15px;
+        transform: translateX(100px);
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    .menu__buttons.active { 
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .menu__buttons button {
+        font-size: 16px;
+        width: 100%;
+        justify-content: center;
+        padding: 4px 20px;
+    }
+
+    .menu-list {
+        width: 40%;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .header-title {
+        font-size: 54px;
+    }
+
+    .header-description {
+        max-width: 100%;
+    }
+
+    .header-container__img {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 320px)  {
+
+    .header-nav {
+        padding: 0 16px;
+    }
+
+    .header-title {
+        font-size: 36px;
+    }
+
+    .header-container__img {
+        min-height: 200px;
+        width: 100%;
+    }
+
+    .logo p {
+        font-size: 20px;
+    }
+
+    .logo img {
+        max-width: 25px;
+        max-height: 20px;
+    }
+
+    .menu__navigation {
+        padding: 8px;
+        right: -16px;
+    }
+
+    .menu-list__btn {
+        font-size: 16px;
+        gap: 4px;
+    }
+
+    .menu-list {
+        padding: 5px 0;
+        font-size: 14px;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .menu-list__btn:last-child .menu-list  {
+        padding: 5px 0;
+    }
+
+    .menu__buttons {
+        top: 355px;
+        gap: 12px;
+    }
+
+    .menu__buttons button {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+}
