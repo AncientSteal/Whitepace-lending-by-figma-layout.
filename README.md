@@ -4,7 +4,8 @@
 ## Ссылка на рабочий сайт развёрнутый через хостинг GitHubPages: [Посмотреть проект]()
 ## Ссылка на GitHub: [Посмотреть код](https://github.com/AncientSteal/Whitepace-lending-by-figma-layout./)
 
-#### Whitepace - SaaS Landing Page дизайн разработан и предоставлен в бесплатный доступ\ Al Razi Siam @alrazisiam Email: siam.alrazi@gmail.com Helsinki, Finland.
+#### Whitepace - SaaS Landing Page дизайн разработан и предоставлен в бесплатный доступ Al Razi Siam @alrazisiam Email: siam.alrazi@gmail.com Helsinki, Finland.
+* [Ссылка на профиль в Figma](https://www.figma.com/@alrazisiam)
 ***
 
 ## 🛠 Технологический стек
