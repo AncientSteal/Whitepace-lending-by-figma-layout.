@@ -1,7 +1,7 @@
 # Whitepace Лендинг по макету фигма.
 Проект представляет собой классический одностраничынй сайт о продукте Whitepace, реализованый с использованием классических инустрментов веб-разработки.
 
-## Ссылка на рабочий сайт развёрнутый через хостинг GitHubPages: [Посмотреть проект]()
+## Ссылка на рабочий сайт развёрнутый через хостинг GitHubPages: [Посмотреть проект](https://ancientsteal.github.io/Whitepace-lending-by-figma-layout./)
 ## Ссылка на GitHub: [Посмотреть код](https://github.com/AncientSteal/Whitepace-lending-by-figma-layout./)
 
 #### Whitepace - SaaS Landing Page дизайн разработан и предоставлен в бесплатный доступ Al Razi Siam @alrazisiam Email: siam.alrazi@gmail.com Helsinki, Finland.
